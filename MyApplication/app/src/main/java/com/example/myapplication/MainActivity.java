@@ -15,8 +15,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_main);
         Button btnSaludar = findViewById(R.id.btnSaludar);
+        Button btnDespedir = findViewById(R.id.btnDespedir);
 
         btnSaludar.setOnClickListener(this);
+        btnDespedir.setOnClickListener(this);
     }
 
     @Override
@@ -24,9 +26,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView txtMensaje = (TextView) findViewById(R.id.txtSaludo);
         int id = view.getId();
         if (id == R.id.btnSaludar) {
-            txtMensaje.setText("Esto funciona!!!");
+            txtMensaje.setText("Hola!!!");
         } else if (id == R.id.btnDespedir) {
-            txtMensaje.setText("Esto no funciona!!!");
+            txtMensaje.setText("Adiós!!!");
         }
     }
 

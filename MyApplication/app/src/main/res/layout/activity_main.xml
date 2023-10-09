@@ -35,10 +35,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginBottom="44dp"
-        android:onClick="cambiaMensaje"
-        app:layout_constraintBottom_toTopOf="@+id/btnSaludar"
+        android:layout_marginTop="84dp"
+        android:onClick="onClick"
+        android:text="@string/Despedir"
         app:layout_constraintStart_toStartOf="@+id/btnSaludar"
-        tools:text="@string/Despedir" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
