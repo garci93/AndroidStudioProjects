@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_calc);
         Button btnSaludar = findViewById(R.id.btnSaludar);
         Button btnDespedir = findViewById(R.id.btnDespedir);
 

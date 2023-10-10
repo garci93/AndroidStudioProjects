@@ -3,4 +3,26 @@
     <string name="strSaludo">Hola alumnos!!!</string>
     <string name="Saludar">Saludar</string>
     <string name="Despedir">Despedir</string>
+    <string name="MC">MC</string>
+    <string name="MMas">M+</string>
+    <string name="MMenos">M-</string>
+    <string name="MR">MR</string>
+    <string name="C">C</string>
+    <string name="Signo">+/-</string>
+    <string name="Div">/</string>
+    <string name="Mul">X</string>
+    <string name="Res">-</string>
+    <string name="Sum">+</string>
+    <string name="Igual">=</string>
+    <string name="Coma">.</string>
+    <string name="N7">7</string>
+    <string name="N8">8</string>
+    <string name="N9">9</string>
+    <string name="N4">4</string>
+    <string name="N5">5</string>
+    <string name="N6">6</string>
+    <string name="N1">1</string>
+    <string name="N2">2</string>
+    <string name="N3">3</string>
+    <string name="N0">0</string>
 </resources>
