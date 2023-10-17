@@ -16,7 +16,7 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
 
     private Button btnIgual,btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnComa,btnSum,btnRes,btnMul,btnDiv,btnC,btnSigno;
     private TextView txtExp;
-    private String cadena;
+    private String cadena = "";
 
     public Calculadora() {
     }
@@ -26,6 +26,7 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        txtExp = findViewById(R.id.txtExp);
         btnIgual = findViewById(R.id.btnIgual);
         btn0 = findViewById(R.id.btn0);
         btn1 = findViewById(R.id.btn1);
@@ -69,17 +70,15 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btnIgual){
-            txtExp.setText("a");
-//            try {
-//                ExpressionBuilder expressionBuilder = new ExpressionBuilder(cadena);
-//                Expression exp = expressionBuilder.build();
-//                double res = exp.evaluate();
-//                txtExp.setText("a");
-//                cadena = ""+res;
-//            } catch (Exception e) {
-//                txtExp.setText("ERR");
-//                cadena="";
-//            }
+            try {
+                ExpressionBuilder expressionBuilder = new ExpressionBuilder(cadena);
+                Expression exp = expressionBuilder.build();
+                double res = exp.evaluate();
+                txtExp.setText(""+res);
+                cadena = ""+res;
+            } catch (Exception e) {
+                cadena="ERR";
+            }
         } else if (view.getId() == R.id.btn0){
             cadena += "0";
         } else if (view.getId() == R.id.btn1){
@@ -101,31 +100,37 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
         } else if (view.getId() == R.id.btn9){
             cadena += "9";
         } else if (view.getId() == R.id.btnSigno){
-            if(cadena.startsWith("-"))
-                cadena = cadena.substring(1);
-            else
-                cadena = "-"+cadena;
+            if (cadena.length() <= 10) {
+                if(cadena.startsWith("-"))
+                    cadena = cadena.substring(1);
+                else
+                    cadena = "-"+cadena;
+            }
         } else if (view.getId() == R.id.btnSum){
-            if(cadena.endsWith("+")) cadena += "+";
+            if(!(cadena.endsWith("+") || cadena.endsWith("-") || cadena.endsWith("*") || cadena.endsWith("/"))) cadena += "+";
         } else if (view.getId() == R.id.btnRes){
-            if(cadena.endsWith("-")) cadena += "-";
+            if(!(cadena.endsWith("+") || cadena.endsWith("-"))) cadena += "-";
         } else if (view.getId() == R.id.btnMul){
             if(cadena.endsWith("+") || cadena.endsWith("-") || cadena.endsWith("/"))
-                cadena = cadena.substring(cadena.length()-1)+"*";
+                cadena = cadena.substring(0,cadena.length()-1)+"*";
             else
                 cadena += "*";
         } else if (view.getId() == R.id.btnDiv){
             if(cadena.endsWith("+") || cadena.endsWith("-") || cadena.endsWith("*"))
-                cadena = cadena.substring(0,cadena.length()-2)+"/";
+                cadena = cadena.substring(0,cadena.length()-1)+"/";
             else
                 cadena += "/";
         } else if (view.getId() == R.id.btnComa) {
-            if (cadena.substring(cadena.length()-1).matches("[0-9]"))
-                cadena += ".";
-            else
-                cadena += "0.";
+            if (cadena.length() != 0) {
+                if (cadena.substring(cadena.length()-1).matches("[0-9]"))
+                    cadena += ".";
+            } else cadena = "0.";
+
         } else if (view.getId() == R.id.btnC) {
             cadena = "";
         }
+        if (cadena.length() > 10) cadena = cadena.substring(0,10);
+        txtExp.setText(cadena);
+        if (cadena.equals("ERR")) cadena = "";
     }
 }

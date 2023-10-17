@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#EDF6F5">
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -237,6 +238,7 @@
         android:id="@+id/txtExp"
         android:layout_width="302dp"
         android:layout_height="108dp"
+        android:background="@drawable/marco_texto"
         android:textAlignment="viewEnd"
         android:textSize="48sp"
         app:flow_verticalAlign="baseline"
