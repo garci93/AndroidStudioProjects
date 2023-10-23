@@ -130,6 +130,7 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
             cadena = "";
         }
         if (cadena.length() > 10) cadena = cadena.substring(0,10);
+        if (cadena.endsWith(".0")) cadena = cadena.substring(0,cadena.length()-2);
         txtExp.setText(cadena);
         if (cadena.equals("ERR")) cadena = "";
     }
