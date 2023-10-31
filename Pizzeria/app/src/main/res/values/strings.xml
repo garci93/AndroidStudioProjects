@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Pizzeria</string>
+    <string name="ElegirPizza">Elegir pizza</string>
+    <string name="Configurar">Configurar</string>
+    <string name="Salir">Salir</string>
+    <string name="PizzaPersonalizada">Pizza personalizada</string>
+    <string name="PizzaPasoAPaso">Confeccionar paso a paso</string>
+    <string name="RepetirUltimoPedido">Repetir último pedido</string>
+    <string name="NuestrasPizzas">Nuestras pizzas</string>
+    <string name="Pequeño">Pequeño</string>
+    <string name="Mediano">Mediano</string>
+    <string name="Grande">Grande</string>
+    <string name="EligeTamaño">Elige un tamaño</string>
+    <string name="ConfirmarPedido">Confirmar pedido</string>
+    <string name="JamonCocido">Jamón cocido</string>
+    <string name="CarnePicada">Carne picada</string>
+    <string name="Atun">Atún</string>
+    <string name="Pepperoni">Pepperoni</string>
+    <string name="ExtraQueso">Extra de queso</string>
 </resources>

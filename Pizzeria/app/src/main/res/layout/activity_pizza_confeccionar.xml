@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/PizzaPasoAPaso"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="104dp" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar4"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/JamonCocido"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/CarnePicada"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="217dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Atun"
+        tools:layout_editor_absoluteX="202dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Pepperoni"
+        tools:layout_editor_absoluteX="280dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ExtraQueso"
+        tools:layout_editor_absoluteX="202dp"
+        tools:layout_editor_absoluteY="217dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/EligeTamaño"
+        tools:layout_editor_absoluteX="150dp"
+        tools:layout_editor_absoluteY="440dp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="524dp" >
+
+        <RadioButton
+            android:id="@+id/radioButton7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Pequeño" />
+
+        <RadioButton
+            android:id="@+id/radioButton8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Mediano" />
+
+        <RadioButton
+            android:id="@+id/radioButton9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Grande" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
