@@ -17,4 +17,7 @@
     <string name="Atun">Atún</string>
     <string name="Pepperoni">Pepperoni</string>
     <string name="ExtraQueso">Extra de queso</string>
+    <string name="Precio">Precio</string>
+    <string name="Total">Total</string>
+    <string name="Atrás">Atrás</string>
 </resources>

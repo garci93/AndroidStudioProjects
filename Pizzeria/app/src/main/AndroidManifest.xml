@@ -13,6 +13,27 @@
         android:theme="@style/Theme.Pizzeria"
         tools:targetApi="31">
         <activity
+            android:name=".Configurar"
+            android:exported="false" />
+        <activity
+            android:name=".PizzaPersonalizada"
+            android:exported="false" />
+        <activity
+            android:name=".PizzaConfeccionar"
+            android:exported="false" />
+        <activity
+            android:name=".Inicio"
+            android:exported="false" />
+        <activity
+            android:name=".ElegirPizza"
+            android:exported="false" />
+        <activity
+            android:name=".ConfirmarPedido"
+            android:exported="false" />
+        <activity
+            android:name=".PizzaRepetir"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

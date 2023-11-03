@@ -13,15 +13,6 @@
         tools:layout_editor_absoluteX="155dp"
         tools:layout_editor_absoluteY="106dp" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        tools:layout_editor_absoluteX="1dp" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -60,4 +51,12 @@
             android:layout_height="wrap_content"
             android:text="@string/Grande" />
     </RadioGroup>
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Atrás"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="34dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
