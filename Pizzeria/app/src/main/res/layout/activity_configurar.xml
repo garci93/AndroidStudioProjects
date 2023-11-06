@@ -10,7 +10,40 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="95dp" />
+        android:text="@string/ColorFondo"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="94dp" />
+
+    <RadioGroup
+        android:layout_width="124dp"
+        android:layout_height="141dp"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="168dp">
+
+        <RadioButton
+            android:id="@+id/radioColor1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/radioColor2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/radioColor3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RadioButton" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/UltimaEleccion"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="482dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,4 +20,7 @@
     <string name="Precio">Precio</string>
     <string name="Total">Total</string>
     <string name="Atrás">Atrás</string>
+    <string name="ColorFondo">Color de fondo</string>
+    <string name="UltimaEleccion">Guardar última elección</string>
+    <string name="Web">Web</string>
 </resources>
