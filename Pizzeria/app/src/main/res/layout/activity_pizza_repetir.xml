@@ -7,12 +7,15 @@
     tools:context=".PizzaRepetir">
 
     <Button
-        android:id="@+id/button12"
+        android:id="@+id/btnAtrasRepetir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
         android:text="@string/Atrás"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="46dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView10"
@@ -55,10 +58,12 @@
         tools:layout_editor_absoluteY="283dp" />
 
     <Button
-        android:id="@+id/button13"
+        android:id="@+id/btnIrAConfirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
         android:text="@string/ConfirmarPedido"
-        tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="538dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
