@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/PizzaPasoAPaso"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="104dp" />
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/JamonCocido"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="148dp" />
 
     <CheckBox
         android:id="@+id/checkBox2"
@@ -26,23 +11,7 @@
         android:layout_height="wrap_content"
         android:text="@string/CarnePicada"
         tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="217dp" />
-
-    <CheckBox
-        android:id="@+id/checkBox3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Atun"
-        tools:layout_editor_absoluteX="202dp"
-        tools:layout_editor_absoluteY="148dp" />
-
-    <CheckBox
-        android:id="@+id/checkBox4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Pepperoni"
-        tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="148dp" />
+        tools:layout_editor_absoluteY="251dp" />
 
     <CheckBox
         android:id="@+id/checkBox5"
@@ -50,7 +19,39 @@
         android:layout_height="wrap_content"
         android:text="@string/ExtraQueso"
         tools:layout_editor_absoluteX="202dp"
-        tools:layout_editor_absoluteY="217dp" />
+        tools:layout_editor_absoluteY="251dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/JamonCocido"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="182dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Pepperoni"
+        tools:layout_editor_absoluteX="280dp"
+        tools:layout_editor_absoluteY="182dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/PizzaPasoAPaso"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="138dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Atun"
+        tools:layout_editor_absoluteX="202dp"
+        tools:layout_editor_absoluteY="182dp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -86,11 +87,14 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btnAtrasConfeccionar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
         android:text="@string/Atrás"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="38dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
