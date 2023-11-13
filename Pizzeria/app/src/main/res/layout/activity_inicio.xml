@@ -5,21 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <Button
         android:id="@+id/btnElegirPizza"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="72dp"
         android:text="@string/ElegirPizza"
-<<<<<<< HEAD
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="250dp" />
-=======
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
->>>>>>> 3ee9c984df08a68e3eea5ddd96648378ba14d5b4
 
     <Button
         android:id="@+id/btnConfigurar"
@@ -27,38 +23,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:text="@string/Configurar"
-<<<<<<< HEAD
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="407dp" />
-=======
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnElegirPizza" />
->>>>>>> 3ee9c984df08a68e3eea5ddd96648378ba14d5b4
+
 
     <Button
         android:id="@+id/btnSalir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="144dp"
         android:text="@string/Salir"
-<<<<<<< HEAD
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="547dp" />
-
-    <Button
-        android:id="@+id/button15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Web"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="105dp" />
-=======
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSitioWeb" />
+
 
     <Button
         android:id="@+id/btnSitioWeb"
@@ -70,5 +51,4 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConfigurar" />
->>>>>>> 3ee9c984df08a68e3eea5ddd96648378ba14d5b4
 </androidx.constraintlayout.widget.ConstraintLayout>

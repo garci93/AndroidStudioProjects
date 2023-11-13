@@ -19,7 +19,6 @@ public class PizzaPersonalizada extends AppCompatActivity {
         pizzas = servicio.getPizzas();
         btnAtrasPersonalizada = findViewById(R.id.btnAtrasPersonalizada);
 
-        //TODO atras
         btnAtrasPersonalizada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

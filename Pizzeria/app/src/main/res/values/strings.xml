@@ -20,11 +20,8 @@
     <string name="Precio">Precio</string>
     <string name="Total">Total</string>
     <string name="Atrás">Atrás</string>
-<<<<<<< HEAD
     <string name="ColorFondo">Color de fondo</string>
     <string name="UltimaEleccion">Guardar última elección</string>
     <string name="Web">Web</string>
-=======
     <string name="SitioWeb">Sitio web</string>
->>>>>>> 3ee9c984df08a68e3eea5ddd96648378ba14d5b4
 </resources>
