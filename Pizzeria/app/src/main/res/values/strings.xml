@@ -24,4 +24,7 @@
     <string name="UltimaEleccion">Guardar última elección</string>
     <string name="Web">Web</string>
     <string name="SitioWeb">Sitio web</string>
+    <string name="IniciarSesion">Iniciar sesión</string>
+    <string name="Contrasena">Contraseña</string>
+    <string name="Usuario">Usuario</string>
 </resources>
