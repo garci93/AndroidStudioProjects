@@ -27,4 +27,7 @@
     <string name="IniciarSesion">Iniciar sesión</string>
     <string name="Contrasena">Contraseña</string>
     <string name="Usuario">Usuario</string>
+    <string name="Rojo">Rojo</string>
+    <string name="Verde">Verde</string>
+    <string name="Azul">Azul</string>
 </resources>

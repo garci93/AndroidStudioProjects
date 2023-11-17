@@ -3,6 +3,7 @@ package com.example.pizzeria;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -53,5 +54,11 @@ public class Inicio extends AppCompatActivity {
         });
     }
 
-
+    @Override
+    protected void onResume(){
+        super.onResume();
+        SharedPreferences sharedPreferences = getSharedPreferences("color_fondo",0);
+        int colorSeleccionado = sharedPreferences.getInt("colorFondoClave",R.color.lightRed);
+        getWindow().getDecorView().setBackgroundColor(colorSeleccionado);
+    }
 }
