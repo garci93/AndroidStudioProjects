@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="buttonLogin">Login</string>
+    <string name="buttonRegistro">Registro</string>
+    <string name="textUsuario">Usuario</string>
+    <string name="textContrasena">Contrasena</string>
+    <string name="buttonVolver">Volver</string>
+    <string name="buttonAceptar">Aceptar</string>
+</resources>
