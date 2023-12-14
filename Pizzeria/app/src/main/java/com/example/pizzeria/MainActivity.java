@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         txtUsuario = findViewById(R.id.txtUsuario);
         txtPassword = findViewById(R.id.txtPassword);
-        btnIniciarSesion = findViewById(R.id.btnIniciarSesion);
         dbReader = new DB(this).getReadableDatabase();
         dbWriter = new DB(this).getWritableDatabase();
     }
