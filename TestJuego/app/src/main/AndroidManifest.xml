@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< Original<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools">
 
 <application
@@ -19,4 +19,14 @@ xmlns:tools="http://schemas.android.com/tools">
     </intent-filter>
 </application>
 
-</manifest>
+</manifest>=======
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<application>
+    <activity
+        android:name="com.example.testjuego.LifeCycleTest"
+        android:exported="false"
+
+        />
+</application>
+</manifest>>>>>>>> Added
