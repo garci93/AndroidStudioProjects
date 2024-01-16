@@ -11,9 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
+        android:onClick="onClick"
         android:text="@string/VolverInicio"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnListar" />
 
@@ -28,21 +29,21 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/radioColor1"
+            android:id="@+id/radioFacil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Facil"
             android:textSize="20sp" />
 
         <RadioButton
-            android:id="@+id/radioColor2"
+            android:id="@+id/radioMedio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Medio"
             android:textSize="20sp" />
 
         <RadioButton
-            android:id="@+id/radioColor3"
+            android:id="@+id/radioDificil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Dificil"
@@ -53,10 +54,10 @@
         android:id="@+id/btnListar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="128dp"
+        android:onClick="onClick"
         android:text="@string/ListarPalabras"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioColorGroup" />
 
@@ -67,6 +68,17 @@
         android:layout_marginTop="68dp"
         android:text="@string/Dificultad"
         android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="@string/Guardar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

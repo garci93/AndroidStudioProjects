@@ -59,4 +59,7 @@
     <string name="PuntuacionMaxima">Puntuación máxima:</string>
     <string name="Atras">Atrás</string>
     <string name="PuntValor">0</string>
+    <string name="RecuerdaPalabras">Recuerda estas palabras</string>
+    <string name="Guardar">Guardar</string>
+    <string name="Siguiente">Siguiente</string>
 </resources>

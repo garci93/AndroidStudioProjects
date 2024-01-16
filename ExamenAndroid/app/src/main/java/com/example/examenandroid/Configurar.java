@@ -6,37 +6,57 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-public class Configurar extends AppCompatActivity {
+import java.util.List;
+
+public class Configurar extends BaseActivity implements View.OnClickListener {
     private RadioGroup radioDificultadGroup;
-    private RadioButton radioDificultad1;
-    private RadioButton radioDificultad2;
-    private RadioButton radioDificultad3;
-    private Button btnListar;
-    private Button btnVolverInicio;
+    private RadioButton radioFacil;
+    private RadioButton radioMedio;
+    private RadioButton radioDificil;
 
     private String dificultad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_configurar);
-        btnVolverInicio = findViewById(R.id.btnVolverInicio);
-        btnListar = findViewById(R.id.btnListar);
-        btnVolverInicio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        btnListar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Configurar.this, ListarActivity.class);
-                startActivity(i);
-            }
-        });
+        radioFacil = findViewById(R.id.radioFacil);
+        radioMedio = findViewById(R.id.radioMedio);
+        radioDificil = findViewById(R.id.radioDificil);
+        setContentView(getLayoutRes());
+
+    }
+
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.activity_configurar;
+    }
+
+    public void onClick(View v) {
+        switch (getResources().getResourceEntryName(v.getId())) {
+            case "btnGuardar":
+                if (radioFacil.isChecked()) {
+                    saveDificult(3);
+                } else if (radioMedio.isChecked()) {
+                    saveDificult(5);
+                } else if (radioDificil.isChecked()) {
+                    saveDificult(10);
+
+                }
+
+                break;
+            case "btnListar":
+                Intent listar = new Intent(this, ListarActivity.class);
+                startActivity(listar);
+                break;
+            case "btnVolverInicio":
+                Intent volver = new Intent(this, MainActivity.class);
+                startActivity(volver);
+                break;
+
+        }
     }
 }
