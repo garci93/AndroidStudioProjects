@@ -1,4 +1,4 @@
-package com.example.testjuego;
+package com.example.testjuegofigura;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,8 +8,11 @@ import android.view.SurfaceView;
 
 import androidx.annotation.NonNull;
 
-public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback {
-    public MoverFiguras(Context context) {
+public class DropAndDropView extends SurfaceView implements SurfaceHolder.Callback {
+
+    HiloPintar thread;
+    Rectangulo rectangulo;
+    public DropAndDropView(Context context) {
 
         super(context);
         getHolder().addCallback(this);

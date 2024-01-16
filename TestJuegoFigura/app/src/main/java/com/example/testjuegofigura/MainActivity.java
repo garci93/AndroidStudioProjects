@@ -1,4 +1,4 @@
-package com.example.testjuego;
+package com.example.testjuegofigura;
 
 import android.app.Activity;
 import android.content.Context;
