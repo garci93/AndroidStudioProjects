@@ -1,0 +1,9 @@
+1.- Base de datos Creada y implementacion en listViews.
+2.- BaseActivity con las cosas que queremos que heredemos en otras clases y el guardado de la dificultad.
+3.- Mostrar Dialogos de salidas (Yes, No, Aceptar, Cancelar)
+4.- Iteracion y enlaces entre paginas para la navegacion.
+5.- Botones de siguiente, atras...
+6.- ProgressBar
+7.- RadioGroup con sus respectivos RadioButtons
+8.- Al seleccionar un elemento de la lista, podemos Eliminar ese elemento de la lista y de la BD, además con el Toast(mensaje emergente)
+9.- Tiempo de espera para listar las palabras y memorizarlas, luego pasa a la siguiente lista(Threads) -----Falta Terminarlo

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonConfiguracion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="24dp"
+        android:onClick="onClick"
+        android:text="Configuracion"
+        app:layout_constraintStart_toStartOf="@+id/buttonCRUD"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCRUD" />
+
+    <Button
+        android:id="@+id/buttonCRUD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="224dp"
+        android:onClick="onClick"
+        android:text="CRUD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSalir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="32dp"
+        android:onClick="onClick"
+        android:text="Salir"
+        app:layout_constraintStart_toStartOf="@+id/buttonConfiguracion"
+        app:layout_constraintTop_toBottomOf="@+id/buttonConfiguracion" />
+</androidx.constraintlayout.widget.ConstraintLayout>

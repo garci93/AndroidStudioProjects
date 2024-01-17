@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ExamenACDAT</string>
+    <string name="btLog">LogIn</string>
+    <string name="btReg">Registrarse</string>
+    <string name="btJugar">Jugar</string>
+    <string name="btPuntuacion">Puntuación</string>
+    <string name="btConf">Configuración</string>
+    <string name="btSalir">Salir</string>
+    <string name="txtTiempo">Tiempo:</string>
+    <string name="btSig">Sigue</string>
+    <string name="btComp">Comprobar</string>
+    <string name="txtPunt">"Puntuacion: "</string>
+    <string name="rFacil">Facil</string>
+    <string name="rMedio">Medio</string>
+    <string name="rDificil">Dificil</string>
+    <string name="btVolver">Volver</string>
+    <string name="btGuardar">Guardar</string>
+</resources>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutPalabras"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JugarActivity">
+
+    <TextView
+        android:id="@+id/txtPalabra12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPalabra11"
+        app:layout_constraintStart_toStartOf="@+id/txtPalabra9" />
+
+    <TextView
+        android:id="@+id/txtPalabra11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/txtPalabra8"
+        app:layout_constraintTop_toBottomOf="@+id/txtPalabra8" />
+
+    <TextView
+        android:id="@+id/txtPalabra10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="59dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPalabra11"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPalabra5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/txtPalabra2"
+        app:layout_constraintTop_toBottomOf="@+id/txtPalabra2" />
+
+    <TextView
+        android:id="@+id/txtPalabra4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPalabra5"
+        app:layout_constraintEnd_toEndOf="@+id/txtPalabra7"
+        app:layout_constraintStart_toStartOf="@+id/txtPalabra7" />
+
+    <TextView
+        android:id="@+id/txtPalabra8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/txtPalabra5"
+        app:layout_constraintTop_toBottomOf="@+id/txtPalabra5" />
+
+    <TextView
+        android:id="@+id/txtPalabra9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPalabra8"
+        app:layout_constraintStart_toStartOf="@+id/txtPalabra6" />
+
+    <TextView
+        android:id="@+id/txtPalabra7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPalabra8"
+        app:layout_constraintEnd_toEndOf="@+id/txtPalabra10"
+        app:layout_constraintStart_toStartOf="@+id/txtPalabra10" />
+
+    <TextView
+        android:id="@+id/txtPalabra6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPalabra5"
+        app:layout_constraintStart_toStartOf="@+id/txtPalabra3" />
+
+    <TextView
+        android:id="@+id/txtPalabra1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPalabra2"
+        app:layout_constraintEnd_toEndOf="@+id/txtPalabra4"
+        app:layout_constraintStart_toStartOf="@+id/txtPalabra4" />
+
+    <TextView
+        android:id="@+id/txtPalabra2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="107dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/txtPalabra3"
+        app:layout_constraintStart_toStartOf="@+id/txtPalabra1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPalabra3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="79dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPalabra2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/buttonAdivinarPalabras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="104dp"
+        android:onClick="onClick"
+        android:text="Adivinar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPalabra13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintEnd_toStartOf="@+id/txtPalabra14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPalabra10" />
+
+    <TextView
+        android:id="@+id/txtPalabra14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPalabra15"
+        app:layout_constraintEnd_toStartOf="@+id/txtPalabra15"
+        app:layout_constraintStart_toEndOf="@+id/txtPalabra13" />
+
+    <TextView
+        android:id="@+id/txtPalabra15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="29dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtPalabra14"
+        app:layout_constraintTop_toBottomOf="@+id/txtPalabra12" />
+
+    <Button
+        android:id="@+id/buttonSalirJugar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginBottom="11dp"
+        android:onClick="onClick"
+        android:text="Salir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

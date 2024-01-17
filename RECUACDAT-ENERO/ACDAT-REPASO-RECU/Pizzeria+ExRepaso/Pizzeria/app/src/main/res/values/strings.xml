@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Pizzeria</string>
+    <string name="titulo">Pizzeria</string>
+    <string name="usuario"></string>
+    <string name="LogIn">LogIn</string>
+    <string name="Register">Register</string>
+    <string name="textViewUsuario">Usuario</string>
+    <string name="textViewContra">Contraseña</string>
+    <string name="pedir">Hacer pedido</string>
+    <string name="web">Nuestro Sitio WEB</string>
+    <string name="tituloWeb">Web de Pizzeria</string>
+    <string name="volver">Volver</string>
+    <string name="salir">Salir</string>
+    <string name="labelConfig">Configuración</string>
+    <string name="fondo">Fondo</string>
+    <string name="fav">Activar Favorita</string>
+    <string name="pizzaFav">Pedir Pizza Favorita</string>
+    <string name="personalizada">Pizza Personalizada</string>
+    <string name="pizzaPred">Pizzas Predeterminadas</string>
+    <string name="peque">Pequeña</string>
+    <string name="mediana">Mediana</string>
+    <string name="familiar">Familiar</string>
+    <string name="pollo">Pollo</string>
+    <string name="bacon">Bacon</string>
+    <string name="peperoni">Pepperoni</string>
+    <string name="aceitunas">Aceitunas</string>
+    <string name="atun">Atún</string>
+    <string name="champi">Champiñones</string>
+    <string name="pimientos">Pimientos</string>
+    <string name="picada">Carne Picada</string>
+    <string name="confirmarPiza">Seguir</string>
+    <string name="confirm">Confirmar</string>
+    <string name="btnCarbonara">Comprar</string>
+    <string name="btnCarnivora">Comprar</string>
+</resources>

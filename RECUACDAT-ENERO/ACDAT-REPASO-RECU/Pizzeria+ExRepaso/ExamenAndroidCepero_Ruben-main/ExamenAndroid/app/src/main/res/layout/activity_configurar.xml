@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConfigurarActivity">
+
+    <Button
+        android:id="@+id/buttonfacil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="127dp"
+        android:onClick="onClick"
+        android:text="Facil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonmedio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:onClick="onClick"
+        android:text="Medio"
+        app:layout_constraintStart_toStartOf="@+id/buttonfacil"
+        app:layout_constraintTop_toBottomOf="@+id/buttonfacil" />
+
+    <Button
+        android:id="@+id/buttonDificil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:onClick="onClick"
+        android:text="Dificil"
+        app:layout_constraintStart_toStartOf="@+id/buttonmedio"
+        app:layout_constraintTop_toBottomOf="@+id/buttonmedio" />
+
+    <Button
+        android:id="@+id/buttonSalirD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginBottom="66dp"
+        android:onClick="onClick"
+        android:text="Salir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonListarTodasPalabras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="107dp"
+        android:onClick="onClick"
+        android:text="Listar palabras"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDificil" />
+</androidx.constraintlayout.widget.ConstraintLayout>
