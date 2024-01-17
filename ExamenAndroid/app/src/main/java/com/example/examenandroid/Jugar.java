@@ -42,7 +42,7 @@ public class Jugar extends BaseActivity implements View.OnClickListener {
                 startActivity(atras);
                 break;
             case "btnSiguienteJugar":
-                Intent siguiente = new Intent(this, Jugar2.class);
+                Intent siguiente = new Intent(this, JugarDos.class);
                 startActivity(siguiente);
                 break;
 
