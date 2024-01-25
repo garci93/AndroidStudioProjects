@@ -8,6 +8,8 @@ import android.view.SurfaceView;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+
 public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback {
     public MoverFiguras(Context context) {
 
@@ -17,7 +19,10 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder holder) {
-
+        int id = 0;
+        figuras = new ArrayList<Figura>();
+        figuras.add(new Circulo(id++,200,200,100));
+        figuras.add(new Rectangulo(id++,200,500,200,200));
     }
 
     @Override

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">José Joaquín Garci Peña</string>
+    <string name="Borrar">Borrar</string>
+    <string name="InsertarCita">Insertar cita</string>
+    <string name="ListarCitas">Listar citas</string>
+    <string name="CitaDia">Cita del día</string>
+    <string name="Configuracion">Configuración</string>
+</resources>
