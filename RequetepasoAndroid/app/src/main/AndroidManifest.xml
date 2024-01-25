@@ -13,6 +13,12 @@
         android:theme="@style/Theme.RequetepasoAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".CRUD"
+            android:exported="false" />
+        <activity
+            android:name=".Configurar"
+            android:exported="false" />
+        <activity
             android:name=".BaseActivity"
             android:exported="false" />
         <activity
