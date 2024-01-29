@@ -1,5 +1,4 @@
-package com.example.testjuego;
-
+package com.example.juegoconsprite;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback {
-    private Hilo hiloJuego;
+    private HiloJuego hiloJuego;
     private Rectangulo rectangulo;
     private Circulo circulo;
     private Linea linea;
@@ -89,7 +88,7 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
-        hiloJuego = new Hilo(getHolder(), this);
+        hiloJuego = new HiloJuego(getHolder(), this);
         hiloJuego.setRunning(true);
     }
 

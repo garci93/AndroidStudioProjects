@@ -1,29 +1,61 @@
 package com.example.testjuego;
 
-abstract class Figura {
-    int xpos;
-    int ypos;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
-    public Figura(int xpos, int ypos){
-        this.xpos = xpos;
-        this.ypos = ypos;
+public abstract class Figura {
+    protected float x;
+    protected float y;
+    protected Float xInicial;
+    protected Float yInicial;
+
+    public Figura(float x, float y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public int getXpos() {
-        return xpos;
+    public float getX() {
+        return x;
     }
 
-    public void setXpos(int xpos) {
-        xpos = xpos;
+    public void setX(float x) {
+        this.x = x;
     }
 
-    public int getYpos() {
-        return ypos;
+    public float getY() {
+        return y;
     }
 
-    public void setYpos(int ypos) {
-        ypos = ypos;
+    public void setY(float y) {
+        this.y = y;
     }
 
-    abstract boolean estaDentro(int posx, int posy);
+    public Float getxInicial() {
+        return xInicial;
+    }
+
+    public void setxInicial(Float xInicial) {
+        this.xInicial = xInicial;
+    }
+
+    public Float getyInicial() {
+        return yInicial;
+    }
+
+    public void setyInicial(Float yInicial) {
+        this.yInicial = yInicial;
+    }
+
+    public void mover(float xActual, float yActual) {
+        if (xInicial != null && yInicial != null) {
+            setX(getX() + xActual - xInicial);
+            setY(getY() + yActual - yInicial);
+            xInicial = xActual;
+            yInicial = yActual;
+        }
+    }
+
+    public abstract boolean isHovered(float x, float y);
+
+    public abstract void onDraw(Canvas canvas, Paint paint);
 }

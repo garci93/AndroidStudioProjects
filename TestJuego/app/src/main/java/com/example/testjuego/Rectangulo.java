@@ -1,17 +1,43 @@
 package com.example.testjuego;
 
-public class Rectangulo extends Figura {
-    private Integer ancho, alto;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
-    Rectangulo (int xpos, int ypos, int ancho, int alto){
-        super(xpos, ypos);
+public class Rectangulo extends Figura {
+    private double width;
+    private double height;
+
+    public Rectangulo(float x, float y, double width, double height) {
+        super(x, y);
+        this.width = width;
+        this.height = height;
     }
 
-    public boolean estaDentro(int x, int y){
-        if (xpos <= x && x <= xpos+ancho && ypos <= y && y <= ypos+alto){
-            return true;
-        } else {
-            return false;
-        }
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    @Override
+    public boolean isHovered(float x, float y) {
+        return x >= this.x && x <= this.x + width && y >= this.y && y <= this.y + height;
+    }
+
+    @Override
+    public void onDraw(Canvas canvas, Paint paint) {
+        paint.setColor(Color.RED);
+        canvas.drawRect(getX(), getY(), getX()+(float)getWidth(), getY()+(float)getHeight(), paint);
     }
 }
