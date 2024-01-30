@@ -3,7 +3,7 @@ package com.example.juegoconsprite;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
-public class HiloJuego {
+public class HiloJuego extends Thread{
     private SurfaceHolder surfaceHolder;
     private MoverFiguras moverFiguras;
     private boolean run;
@@ -33,7 +33,7 @@ public class HiloJuego {
                 if (canvas != null){
                     canvas = surfaceHolder.lockCanvas();
                     synchronized (surfaceHolder) {
-                        moverFiguras.draw(canvas);
+                        moverFiguras.postInvalidate();
                     }
                 }
             } finally {
@@ -53,4 +53,5 @@ public class HiloJuego {
 
         moverFiguras.postInvalidate();
     }
+
 }

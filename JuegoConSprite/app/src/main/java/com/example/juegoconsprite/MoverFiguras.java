@@ -1,5 +1,7 @@
 package com.example.juegoconsprite;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -14,24 +16,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback {
+    private Bitmap bmp;
     private HiloJuego hiloJuego;
-    private Rectangulo rectangulo;
+    /*private Rectangulo rectangulo;
     private Circulo circulo;
-    private Linea linea;
+    private Linea linea;*/
     private Paint paint;
     private Paint linePaint;
-    private List<Figura> figuras = new ArrayList<>();
+    private Sprite sprite;
+//    private List<Figura> figuras = new ArrayList<>();*/
 
 
     public MoverFiguras(Context context) {
         super(context);
-        rectangulo = new Rectangulo(200, 400, 700, 500);
-        figuras.add(rectangulo);
-
-        circulo = new Circulo(100, 100, 100);
-        figuras.add(circulo);
-
-        linea = new Linea();
+        getHolder().addCallback(this);
+//        rectangulo = new Rectangulo(200, 400, 700, 500);
+//        figuras.add(rectangulo);
+//
+//        circulo = new Circulo(100, 100, 100);
+//        figuras.add(circulo);
+//
+//        linea = new Linea();
 
         paint = new Paint();
         linePaint = new Paint();
@@ -40,48 +45,49 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
 
     @Override
     protected void onDraw(Canvas canvas) {
+        canvas.drawColor(Color.BLACK);
+        sprite.onDraw(canvas);
         super.onDraw(canvas);
-        canvas.drawColor(Color.WHITE);
 
-        for (Figura figura : figuras) {
-            figura.onDraw(canvas, paint);
-        }
-
-        linea.onDraw(canvas, linePaint);
+//        for (Figura figura : figuras) {
+//            figura.onDraw(canvas, paint);
+//        }
+//
+//        linea.onDraw(canvas, linePaint);
         invalidate();
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         //return super.onTouchEvent(event);
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                for (Figura figura : figuras) {
-                    if (figura.isHovered(event.getX(), event.getY())) {
-                        figura.setxInicial(event.getX());
-                        figura.setyInicial(event.getY());
-                    }
-                }
-
-                linea.guardarPuntoInicial(event.getX(), event.getY());
-                break;
-            case MotionEvent.ACTION_MOVE:
-                for (Figura figura : figuras) {
-                    figura.mover(event.getX(), event.getY());
-                }
-
-                linea.guardarPunto(event.getX(), event.getY());
-                break;
-            case MotionEvent.ACTION_CANCEL:
-                break;
-            case MotionEvent.ACTION_UP:
-                for (Figura figura : figuras) {
-                    figura.setxInicial(null);
-                    figura.setyInicial(null);
-                }
-
-                break;
-        }
+//        switch (event.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                for (Figura figura : figuras) {
+//                    if (figura.isHovered(event.getX(), event.getY())) {
+//                        figura.setxInicial(event.getX());
+//                        figura.setyInicial(event.getY());
+//                    }
+//                }
+//
+//                linea.guardarPuntoInicial(event.getX(), event.getY());
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//                for (Figura figura : figuras) {
+//                    figura.mover(event.getX(), event.getY());
+//                }
+//
+//                linea.guardarPunto(event.getX(), event.getY());
+//                break;
+//            case MotionEvent.ACTION_CANCEL:
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                for (Figura figura : figuras) {
+//                    figura.setxInicial(null);
+//                    figura.setyInicial(null);
+//                }
+//
+//                break;
+//        }
 
         return true;
     }
@@ -90,6 +96,9 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
     public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
         hiloJuego = new HiloJuego(getHolder(), this);
         hiloJuego.setRunning(true);
+        hiloJuego.start();
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.dvd);
+        sprite = new Sprite(this, bmp);
     }
 
     @Override
