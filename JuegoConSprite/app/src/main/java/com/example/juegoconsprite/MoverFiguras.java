@@ -23,7 +23,14 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
     private Linea linea;*/
     private Paint paint;
     private Paint linePaint;
-    private Sprite sprite;
+    private Sprite[] sprites = {
+            new Sprite(this, BitmapFactory.decodeResource(getResources(), R.drawable.good1)),
+            new Sprite(this, 0, 5, BitmapFactory.decodeResource(getResources(), R.drawable.bad2)),
+            new Sprite(this, 10, 5, BitmapFactory.decodeResource(getResources(), R.drawable.good3)),
+            new Sprite(this, 30, 0, BitmapFactory.decodeResource(getResources(), R.drawable.bad4)),
+            new Sprite(this, 2, 2, BitmapFactory.decodeResource(getResources(), R.drawable.good5)),
+    };
+
 //    private List<Figura> figuras = new ArrayList<>();*/
 
 
@@ -46,7 +53,9 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(Color.BLACK);
-        sprite.onDraw(canvas);
+        for (Sprite sprite : sprites) {
+            sprite.onDraw(canvas);
+        }
         super.onDraw(canvas);
 
 //        for (Figura figura : figuras) {
@@ -98,7 +107,6 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
         hiloJuego.setRunning(true);
         hiloJuego.start();
         bmp = BitmapFactory.decodeResource(getResources(), R.drawable.bad5);
-        sprite = new Sprite(this, bmp);
     }
 
     @Override
