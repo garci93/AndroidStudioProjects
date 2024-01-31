@@ -97,7 +97,7 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
         hiloJuego = new HiloJuego(getHolder(), this);
         hiloJuego.setRunning(true);
         hiloJuego.start();
-        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.dvd);
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.bad5);
         sprite = new Sprite(this, bmp);
     }
 
