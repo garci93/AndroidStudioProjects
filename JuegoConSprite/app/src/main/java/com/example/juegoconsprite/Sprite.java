@@ -4,10 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
+import java.util.Random;
+
 public class Sprite {
 
     private static final int BMP_ROWS = 4;
     private static final int BMP_COLUMNS = 3;
+    private static final int MAX_SPEED = 15;
     private int x = 0;
     private int y = 0;
     private int xSpeed = 20;
@@ -23,18 +26,18 @@ public class Sprite {
 
     public Sprite (MoverFiguras moverFiguras, Bitmap bmp) {
         this.moverFiguras = moverFiguras;
-        this.bmp = bmp;
+        Random rnd = new Random();
         this.width = bmp.getWidth() / BMP_COLUMNS;
         this.height = bmp.getHeight() / BMP_ROWS;
+        this.bmp = bmp;
+        x = rnd.nextInt(moverFiguras.getWidth() - width);
+        y = rnd.nextInt(moverFiguras.getHeight() - height);
+        xSpeed = rnd.nextInt(MAX_SPEED*2) - MAX_SPEED;
+        ySpeed = rnd.nextInt(MAX_SPEED*2) - MAX_SPEED;
     }
 
-    public Sprite (MoverFiguras moverFiguras, int xSpeed, int ySpeed, Bitmap bmp) {
-        this.moverFiguras = moverFiguras;
-        this.xSpeed = xSpeed;
-        this.ySpeed = ySpeed;
-        this.bmp = bmp;
-        this.width = bmp.getWidth() / BMP_COLUMNS;
-        this.height = bmp.getHeight() / BMP_ROWS;
+    public boolean isCollition(float x2, float y2) {
+        return x2 > x && x2 < x + width && y2 > y && y2 < y + height;
     }
 
     private void update() {
@@ -50,9 +53,7 @@ public class Sprite {
     }
 
     public void onDraw(Canvas canvas) {
-
         update();
-
         int srcX = currentFrame * width;
         int srcY = getAnimationRow() * height;
         Rect src = new Rect(srcX, srcY, srcX + width, srcY + height);
