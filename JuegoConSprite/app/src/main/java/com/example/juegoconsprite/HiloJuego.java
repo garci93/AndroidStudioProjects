@@ -30,8 +30,9 @@ public class HiloJuego extends Thread{
             canvas = null;
             startTime = System.currentTimeMillis();
             try {
-                if (canvas != null){
+
                     canvas = surfaceHolder.lockCanvas();
+                if (canvas != null){
                     synchronized (surfaceHolder) {
                         moverFiguras.postInvalidate();
                     }

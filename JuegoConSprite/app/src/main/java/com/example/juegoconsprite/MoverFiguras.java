@@ -5,13 +5,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import androidx.annotation.NonNull;
-import androidx.core.os.LocaleListCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +21,8 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
     private Paint linePaint;
     private Bitmap bmpBlood;
     private List<Sprite> sprites = new ArrayList<Sprite>();
+    private List<Sangre> sang = new ArrayList<Sangre>();
+    private long lastClick;
 
     private void createSprites() {
         sprites.add(createSprite(R.drawable.bad1));
@@ -54,11 +54,10 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Sangre sang;
-        for (int i = sang.size(); i >= 0; i--) {
+        for (int i = sang.size()-1; i >= 0; i--) {
             sang.get(i).onDraw(canvas);
         }
-        canvas.drawColor(Color.BLACK);
+
         for (Sprite sprite : sprites) {
             sprite.onDraw(canvas);
         }
@@ -66,12 +65,18 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        synchronized (getHolder()) {
-            for (int i = sprites.size() - 1; i >= 0; i--) {
-                Sprite sprite = sprites.get(i);
-                if (sprite.isCollition(event.getX(), event.getY())) {
-                    sprites.remove(sprite);
-                    break;
+        if(System.currentTimeMillis() - lastClick > 100){
+            lastClick = System.currentTimeMillis();
+            float x = event.getX();
+            float y = event.getY();
+            synchronized (getHolder()) {
+                for (int i = sprites.size() - 1; i >= 0; i--) {
+                    Sprite sprite = sprites.get(i);
+                    if (sprite.isCollision(event.getX(), event.getY())) {
+                        sprites.remove(sprite);
+                        sang.add(new Sangre(sang, this, x, y, bmpBlood));
+                        break;
+                    }
                 }
             }
         }

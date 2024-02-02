@@ -10,7 +10,7 @@ public class Sprite {
 
     private static final int BMP_ROWS = 4;
     private static final int BMP_COLUMNS = 3;
-    private static final int MAX_SPEED = 15;
+    private static final int MAX_SPEED = 20;
     private int x = 0;
     private int y = 0;
     private int xSpeed = 20;
@@ -26,17 +26,15 @@ public class Sprite {
 
     public Sprite (MoverFiguras moverFiguras, Bitmap bmp) {
         this.moverFiguras = moverFiguras;
-        Random rnd = new Random();
         this.width = bmp.getWidth() / BMP_COLUMNS;
         this.height = bmp.getHeight() / BMP_ROWS;
         this.bmp = bmp;
-        x = rnd.nextInt(moverFiguras.getWidth() - width);
-        y = rnd.nextInt(moverFiguras.getHeight() - height);
+        Random rnd = new Random();
         xSpeed = rnd.nextInt(MAX_SPEED*2) - MAX_SPEED;
         ySpeed = rnd.nextInt(MAX_SPEED*2) - MAX_SPEED;
     }
 
-    public boolean isCollition(float x2, float y2) {
+    public boolean isCollision(float x2, float y2) {
         return x2 > x && x2 < x + width && y2 > y && y2 < y + height;
     }
 
