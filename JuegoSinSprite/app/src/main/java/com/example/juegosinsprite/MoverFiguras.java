@@ -1,10 +1,12 @@
 package com.example.juegosinsprite;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -13,10 +15,14 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback {
     private GameThread gameThread;
     private Rectangulo rectangulo;
+    private int radioCirculo=100;
+    private int anchoRectangulo=500;
+    private int altoRectangulo=700;
     private Circulo circulo;
     private Linea linea;
     private Paint paint;
@@ -26,10 +32,20 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
 
     public MoverFiguras(Context context) {
         super(context);
-        rectangulo = new Rectangulo(200, 400, 700, 500);
-        figuras.add(rectangulo);
+        Random random = new Random();
 
-        circulo = new Circulo(100, 100, 100);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) getContext()).getWindowManager()
+                .getDefaultDisplay()
+                .getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+        int x = random.nextInt(width-anchoRectangulo-1);
+        int y = random.nextInt(height-altoRectangulo-1);
+        rectangulo = new Rectangulo(x, y, anchoRectangulo, altoRectangulo);
+        figuras.add(rectangulo);
+        x = random.nextInt(this.getWidth()-radioCirculo-1);
+        circulo = new Circulo(x, x, radioCirculo);
         figuras.add(circulo);
 
         linea = new Linea();
