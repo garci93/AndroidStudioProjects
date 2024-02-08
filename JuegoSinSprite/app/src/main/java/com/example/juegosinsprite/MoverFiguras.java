@@ -24,7 +24,6 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
     private int anchoRectangulo=500;
     private int altoRectangulo=700;
     private Circulo circulo;
-    private Linea linea;
     private Paint paint;
     private Paint linePaint;
     private List<Figura> figuras = new ArrayList<>();
@@ -44,11 +43,9 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
         int y = random.nextInt(height-altoRectangulo-1);
         rectangulo = new Rectangulo(x, y, anchoRectangulo, altoRectangulo);
         figuras.add(rectangulo);
-        x = random.nextInt(this.getWidth()-radioCirculo-1);
+        x = random.nextInt(width-radioCirculo-1);
         circulo = new Circulo(x, x, radioCirculo);
         figuras.add(circulo);
-
-        linea = new Linea();
 
         paint = new Paint();
         linePaint = new Paint();
@@ -64,7 +61,6 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
             figura.onDraw(canvas, paint);
         }
 
-        linea.onDraw(canvas, linePaint);
         invalidate();
     }
 
@@ -80,14 +76,12 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
                     }
                 }
 
-                linea.guardarPuntoInicial(event.getX(), event.getY());
                 break;
             case MotionEvent.ACTION_MOVE:
                 for (Figura figura : figuras) {
                     figura.mover(event.getX(), event.getY());
                 }
 
-                linea.guardarPunto(event.getX(), event.getY());
                 break;
             case MotionEvent.ACTION_CANCEL:
                 break;
