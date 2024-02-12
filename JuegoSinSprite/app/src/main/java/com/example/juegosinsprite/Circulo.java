@@ -31,7 +31,7 @@ public class Circulo extends Figura {
 
     @Override
     public void onDraw(Canvas canvas, Paint paint) {
-        paint.setColor(Color.BLUE);
+        paint.setColor(Color.CYAN);
         canvas.drawCircle(x, y, radio, paint);
 
     }

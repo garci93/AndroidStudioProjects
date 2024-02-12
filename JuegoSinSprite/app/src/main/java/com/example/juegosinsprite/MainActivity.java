@@ -21,13 +21,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private SurfaceView surfaceView;
     private Button button;
+    private MoverFiguras moverFiguras;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setRequestedOrientation((ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT));
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
 
         surfaceView = findViewById(R.id.surfaceView);
         button = findViewById(R.id.button);
+
+        surfaceView.setBackgroundColor(Color.WHITE);
+        moverFiguras = new MoverFiguras(this);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,12 +45,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
         });
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        super.onCreate(savedInstanceState);
-        setContentView(new MoverFiguras(this));
     }
 
     @Override

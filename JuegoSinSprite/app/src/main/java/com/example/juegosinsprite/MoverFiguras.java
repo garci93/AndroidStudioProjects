@@ -32,6 +32,7 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
     public MoverFiguras(Context context) {
         super(context);
         Random random = new Random();
+        setBackgroundColor(Color.WHITE);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager()
@@ -39,17 +40,17 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
                 .getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
-        int x = random.nextInt(width-anchoRectangulo-1);
-        int y = random.nextInt(height-altoRectangulo-1);
+        int x = random.nextInt(width - anchoRectangulo - 1);
+        int y = random.nextInt(height - altoRectangulo - 1);
         rectangulo = new Rectangulo(x, y, anchoRectangulo, altoRectangulo);
         figuras.add(rectangulo);
-        x = random.nextInt(width-radioCirculo-1);
+        x = random.nextInt(width - radioCirculo - 1);
         circulo = new Circulo(x, x, radioCirculo);
         figuras.add(circulo);
 
         paint = new Paint();
         linePaint = new Paint();
-        setBackgroundColor(Color.BLACK);
+        linePaint.setColor(Color.BLACK);
     }
 
     @Override
@@ -100,6 +101,7 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
         gameThread = new GameThread(getHolder(), this);
+        setBackgroundColor(Color.WHITE);
         gameThread.setRunning(true);
     }
 
