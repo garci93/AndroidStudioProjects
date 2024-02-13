@@ -1,16 +1,9 @@
 package com.example.juegosinsprite;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
-import android.content.Context;
-import android.content.pm.ActivityInfo;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.SurfaceHolder;
+import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
@@ -20,7 +13,7 @@ import android.widget.Button;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private SurfaceView surfaceView;
-    private Button button;
+    private Button btnGenerar;
     private MoverFiguras moverFiguras;
 
     @Override
@@ -33,15 +26,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         surfaceView = findViewById(R.id.surfaceView);
-        button = findViewById(R.id.button);
+        btnGenerar = findViewById(R.id.btnGenerar);
 
         surfaceView.setBackgroundColor(Color.WHITE);
-        moverFiguras = new MoverFiguras(this);
+        surfaceView = new MoverFiguras(this);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        btnGenerar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                moverFiguras.generarFiguras();
             }
         });
 
@@ -50,10 +43,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (getResources().getResourceEntryName(v.getId())) {
-            case "button":
-                //GENERAR FIGURAS
+        /*switch (getResources().getResourceEntryName(v.getId())) {
+            case "btnGenerar":
+                moverFiguras.generarFiguras();
                 break;
-        }
+        }*/
     }
 }

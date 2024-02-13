@@ -53,6 +53,23 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
         linePaint.setColor(Color.BLACK);
     }
 
+    public void generarFiguras() {
+        Random random = new Random();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) getContext()).getWindowManager()
+                .getDefaultDisplay()
+                .getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+        int x = random.nextInt(width - anchoRectangulo - 1);
+        int y = random.nextInt(height - altoRectangulo - 1);
+        rectangulo = new Rectangulo(x, y, anchoRectangulo, altoRectangulo);
+        figuras.add(rectangulo);
+        x = random.nextInt(width - radioCirculo - 1);
+        circulo = new Circulo(x, x, radioCirculo);
+        figuras.add(circulo);
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
