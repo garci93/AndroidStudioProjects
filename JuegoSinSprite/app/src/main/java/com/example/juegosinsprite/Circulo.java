@@ -9,8 +9,8 @@ import java.util.Random;
 public class Circulo extends Figura {
     private float radio;
 
-    public Circulo(float x, float y, float radio) {
-        super(x, y);
+    public Circulo(float x, float y, float radio, boolean relleno) {
+        super(x, y, relleno);
         this.radio = radio;
     }
 
@@ -31,8 +31,16 @@ public class Circulo extends Figura {
 
     @Override
     public void onDraw(Canvas canvas, Paint paint) {
-        paint.setColor(Color.CYAN);
-        canvas.drawCircle(x, y, radio, paint);
+        paint.setColor(0xFF008000);
+        paint.setStyle(Paint.Style.FILL);
+
+        if (this.relleno) {
+            canvas.drawCircle(x, y, radio, paint);
+        } else {
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setStrokeWidth(5);
+            canvas.drawCircle(x, y, radio, paint);
+        }
 
     }
 }

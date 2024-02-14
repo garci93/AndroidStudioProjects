@@ -6,10 +6,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -18,56 +20,68 @@ import java.util.List;
 import java.util.Random;
 
 public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback {
+    private final int altoSurface = 1620;
     private GameThread gameThread;
-    private Rectangulo rectangulo;
-    private int radioCirculo=100;
-    private int anchoRectangulo=500;
-    private int altoRectangulo=700;
-    private Circulo circulo;
     private Paint paint;
-    private Paint linePaint;
-    private List<Figura> figuras = new ArrayList<>();
+    private List<Figura> figurasRellenas = new ArrayList<>();
+    private List<Figura> figurasVacias = new ArrayList<>();
+    private int altoPantalla;
+    private int anchoPantalla;
+    private int radio = 100;
+    private int anchoRectangulo = 150;
+    private int altoRectangulo = 200;
+
+    private int puntuacion = 0;
+    private TextView txtPuntos;
 
 
-    public MoverFiguras(Context context) {
-        super(context);
-        Random random = new Random();
-        setBackgroundColor(Color.WHITE);
+
+    public MoverFiguras(Context context, AttributeSet attrs, TextView txtPuntos){
+        super(context, attrs);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
-        ((Activity) getContext()).getWindowManager()
-                .getDefaultDisplay()
-                .getMetrics(displayMetrics);
-        int height = displayMetrics.heightPixels;
-        int width = displayMetrics.widthPixels;
-        int x = random.nextInt(width - anchoRectangulo - 1);
-        int y = random.nextInt(height - altoRectangulo - 1);
-        rectangulo = new Rectangulo(x, y, anchoRectangulo, altoRectangulo);
-        figuras.add(rectangulo);
-        x = random.nextInt(width - radioCirculo - 1);
-        circulo = new Circulo(x, x, radioCirculo);
-        figuras.add(circulo);
+        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        altoPantalla = displayMetrics.heightPixels;
+        anchoPantalla = displayMetrics.widthPixels;
+        this.txtPuntos = txtPuntos;
 
         paint = new Paint();
-        linePaint = new Paint();
-        linePaint.setColor(Color.BLACK);
+        setBackgroundColor(Color.BLACK);
+
+        generarFigurasRandom();
     }
 
-    public void generarFiguras() {
-        Random random = new Random();
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        ((Activity) getContext()).getWindowManager()
-                .getDefaultDisplay()
-                .getMetrics(displayMetrics);
-        int height = displayMetrics.heightPixels;
-        int width = displayMetrics.widthPixels;
-        int x = random.nextInt(width - anchoRectangulo - 1);
-        int y = random.nextInt(height - altoRectangulo - 1);
-        rectangulo = new Rectangulo(x, y, anchoRectangulo, altoRectangulo);
-        figuras.add(rectangulo);
-        x = random.nextInt(width - radioCirculo - 1);
-        circulo = new Circulo(x, x, radioCirculo);
-        figuras.add(circulo);
+    public void incrementarPuntuacion() {
+        puntuacion++;
+        actualizarPuntuacion();
+    }
+
+    public void setTxtPuntos(TextView txtPuntos) {
+        this.txtPuntos = txtPuntos;
+        actualizarPuntuacion();
+    }
+
+    public void actualizarPuntuacion() {
+        ((Activity) getContext()).runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (txtPuntos != null) {
+                    txtPuntos.setText("Puntuación: " + puntuacion);
+                }
+            }
+        });
+    }
+
+    public void generarFigurasRandom() {
+        int NumeroFiguras = (int) (Math.random() * 2);
+
+        if (NumeroFiguras == 0) {
+            figurasRellenas.add(new Circulo((float) ((Math.random() * (anchoPantalla - radio*2)+radio)), (float) ((Math.random() * (altoSurface - radio*2)+radio)), radio, true));
+            figurasVacias.add(new Circulo((float) ((Math.random() * (anchoPantalla - radio*2)+radio)), (float) ((Math.random() * (altoSurface - radio*2)+radio)), radio, false));
+        } else {
+            figurasRellenas.add(new Rectangulo((float) ((Math.random() * (anchoPantalla - anchoRectangulo*2)+anchoRectangulo)), (float) ((Math.random() * (altoSurface - altoRectangulo*2)+altoRectangulo)), anchoRectangulo, altoRectangulo, true));
+            figurasVacias.add(new Rectangulo((float) ((Math.random() * (anchoPantalla - anchoRectangulo*2)+anchoRectangulo)), (float) ((Math.random() * (altoSurface - altoRectangulo*2)+altoRectangulo)), anchoRectangulo, altoRectangulo, false));
+        }
     }
 
     @Override
@@ -75,7 +89,11 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
         super.onDraw(canvas);
         canvas.drawColor(Color.WHITE);
 
-        for (Figura figura : figuras) {
+        for (Figura figura : figurasRellenas) {
+            figura.onDraw(canvas, paint);
+        }
+
+        for (Figura figura : figurasVacias) {
             figura.onDraw(canvas, paint);
         }
 
@@ -84,19 +102,18 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //return super.onTouchEvent(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                for (Figura figura : figuras) {
+                for (Figura figura : figurasRellenas) {
                     if (figura.isHovered(event.getX(), event.getY())) {
-                        figura.setxInicial(event.getX());
-                        figura.setyInicial(event.getY());
+                        figura.setInitialX(event.getX());
+                        figura.setInitialY(event.getY());
                     }
                 }
 
                 break;
             case MotionEvent.ACTION_MOVE:
-                for (Figura figura : figuras) {
+                for (Figura figura : figurasRellenas) {
                     figura.mover(event.getX(), event.getY());
                 }
 
@@ -104,11 +121,21 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
             case MotionEvent.ACTION_CANCEL:
                 break;
             case MotionEvent.ACTION_UP:
-                for (Figura figura : figuras) {
-                    figura.setxInicial(null);
-                    figura.setyInicial(null);
-                }
+                for (Figura figura : figurasRellenas) {
+                    if (figura.getInitialX() != null && figura.getInitialY() != null) {
+                        int index = figurasRellenas.indexOf(figura);
+                        Figura figuraVacia = figurasVacias.get(index);
 
+                        if (figuraVacia.isNear(figura.getX(), figura.getY())) {
+                            figura.setX(figuraVacia.getX());
+                            figura.setY(figuraVacia.getY());
+                            incrementarPuntuacion();
+                        }
+                    }
+
+                    figura.setInitialX(null);
+                    figura.setInitialY(null);
+                }
                 break;
         }
 
@@ -118,8 +145,8 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
         gameThread = new GameThread(getHolder(), this);
-        setBackgroundColor(Color.WHITE);
         gameThread.setRunning(true);
+
     }
 
     @Override

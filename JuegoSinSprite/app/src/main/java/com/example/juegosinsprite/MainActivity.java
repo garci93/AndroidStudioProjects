@@ -1,5 +1,6 @@
 package com.example.juegosinsprite;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,44 +10,57 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-    private SurfaceView surfaceView;
-    private Button btnGenerar;
-    private MoverFiguras moverFiguras;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private FrameLayout frameLayout;
+
+    private TextView txtPuntos;
+    private Button btnGenerar, btnSalir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main);
 
-        surfaceView = findViewById(R.id.surfaceView);
-        btnGenerar = findViewById(R.id.btnGenerar);
+        frameLayout = findViewById(R.id.frameLayout);
 
-        surfaceView.setBackgroundColor(Color.WHITE);
-        surfaceView = new MoverFiguras(this);
+
+
+        txtPuntos = findViewById(R.id.txtPuntos);
+        btnGenerar = findViewById(R.id.btnGenerar);
+        btnSalir = findViewById(R.id.btnSalir);
+        MoverFiguras surfaceView = new MoverFiguras(this, null, txtPuntos);
+        frameLayout.addView(surfaceView);
+
 
         btnGenerar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moverFiguras.generarFiguras();
+                surfaceView.generarFigurasRandom();
             }
         });
 
-
+        btnSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
-        /*switch (getResources().getResourceEntryName(v.getId())) {
-            case "btnGenerar":
-                moverFiguras.generarFiguras();
-                break;
-        }*/
+
     }
 }

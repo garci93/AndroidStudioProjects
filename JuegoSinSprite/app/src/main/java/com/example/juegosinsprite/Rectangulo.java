@@ -8,8 +8,8 @@ public class Rectangulo extends Figura {
     private double width;
     private double height;
 
-    public Rectangulo(float x, float y, double width, double height) {
-        super(x, y);
+    public Rectangulo(float x, float y, double width, double height, boolean relleno) {
+        super(x, y, relleno);
         this.width = width;
         this.height = height;
     }
@@ -38,7 +38,14 @@ public class Rectangulo extends Figura {
     @Override
     public void onDraw(Canvas canvas, Paint paint) {
         paint.setColor(Color.RED);
-        canvas.drawRect(getX(), getY(), getX()+(float)getWidth(), getY()+(float)getHeight(), paint);
+        paint.setStyle(Paint.Style.FILL);
+        if (this.relleno) {
+            canvas.drawRect(getX(), getY(), getX()+(float)getWidth(), getY()+(float)getHeight(), paint);
+        } else {
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setStrokeWidth(5);
+            canvas.drawRect(getX(), getY(), getX()+(float)getWidth(), getY()+(float)getHeight(), paint);
+        }
     }
 }
 

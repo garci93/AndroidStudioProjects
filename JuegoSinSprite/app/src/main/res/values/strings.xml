@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">JuegoSinSprite</string>
     <string name="GenerarFigura">Generar figura</string>
+    <string name="Puntuacion">Puntuación: 0</string>
 </resources>
