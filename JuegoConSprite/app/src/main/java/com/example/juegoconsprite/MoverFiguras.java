@@ -25,7 +25,7 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
     private long lastClick;
 
     private void createSprites() {
-        sprites.add(createSprite(R.drawable.bad1));
+        sprites.add(createSprite(R.drawable.ship));
         sprites.add(createSprite(R.drawable.bad2));
         sprites.add(createSprite(R.drawable.bad3));
         sprites.add(createSprite(R.drawable.bad4));
