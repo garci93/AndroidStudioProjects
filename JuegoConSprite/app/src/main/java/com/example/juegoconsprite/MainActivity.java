@@ -14,16 +14,18 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setRequestedOrientation((ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT));
+        setRequestedOrientation((ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE));
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        ImageView backgroundImageView = findViewById(R.id.imageView);
 
         super.onCreate(savedInstanceState);
         setContentView(new MoverFiguras(this));
