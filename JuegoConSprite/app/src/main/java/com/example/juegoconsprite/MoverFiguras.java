@@ -186,11 +186,11 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback 
         mediaPlayerCrash.start();
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
         builder.setTitle("Game Over");
-        builder.setMessage("¡Has perdido!" +
-                "\nPuntos obtenidos: "+jugador.getScore()+
-        "\nPuntuación máxima: "+jugador.getMaxScore()+
-                "\n¿Volver a jugar?");
-        builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+        builder.setMessage("You just lost the game!" +
+                "\nFinal score: "+jugador.getScore()+
+        "\nHighest score: "+jugador.getMaxScore()+
+                "\nPlay again?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
