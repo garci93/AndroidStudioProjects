@@ -32,10 +32,10 @@ public class DB extends SQLiteOpenHelper {
                 "numVeces INTEGER NOT NULL," +
                 "valoracion TEXT NOT NULL)");
 
-        insertarCita(db, "Sólo sé que no sé nada","Sócrates",0,"Buena");
-        insertarCita(db, "Hay dos cosas infinitas, el Universo y la estupidez humana","Albert Einstein",0,"Buena");
-        insertarCita(db, "Más vale la pena en el rostro que la mancha en el corazón","Miguel de Cervantes",0,"Buena");
-        insertarCita(db, "El valor de una idea radica en el uso de la misma","Thomas A. Edison",0,"Buena");
+        insertarCitaPredeterminado(db, "Sólo sé que no sé nada","Sócrates",0,"Buena");
+        insertarCitaPredeterminado(db, "Hay dos cosas infinitas, el Universo y la estupidez humana","Albert Einstein",0,"Buena");
+        insertarCitaPredeterminado(db, "Más vale la pena en el rostro que la mancha en el corazón","Miguel de Cervantes",0,"Buena");
+        insertarCitaPredeterminado(db, "El valor de una idea radica en el uso de la misma","Thomas A. Edison",0,"Buena");
 
     }
 
@@ -83,10 +83,11 @@ public class DB extends SQLiteOpenHelper {
                 listaPalabras.add(cita);
             } while (cursor.moveToNext());
         }
+
         return listaPalabras;
     }
 
-    public void insertarCita(SQLiteDatabase db, String cita, String autor, int numVeces, String valoracion) {
+    public void insertarCitaPredeterminado(SQLiteDatabase db, String cita, String autor, int numVeces, String valoracion) {
         ContentValues values = new ContentValues();
         values.put("cita", cita);
         values.put("autor", autor);
@@ -95,11 +96,40 @@ public class DB extends SQLiteOpenHelper {
         db.insert(TABLE_PALABRAS, null, values);
     }
 
+    public void modificarCita(SQLiteDatabase db, int idCita, String nuevaCita, String nuevoAutor, int nuevoNumVeces, String nuevaValoracion) {
+        ContentValues values = new ContentValues();
+        values.put("cita", nuevaCita);
+        values.put("autor", nuevoAutor);
+        values.put("numVeces", nuevoNumVeces);
+        values.put("valoracion", nuevaValoracion);
+
+        String whereClause = "codigo=?";
+        String[] whereArgs = { String.valueOf(idCita) };
+
+        db.update(TABLE_PALABRAS, values, whereClause, whereArgs);
+    }
+
+    public void borrarCita(SQLiteDatabase db, int idCita) {
+        String whereClause = "codigo=?";
+        String[] whereArgs = { String.valueOf(idCita) };
+
+        db.delete(TABLE_PALABRAS, whereClause, whereArgs);
+    }
+
+    public void insertarCita(SQLiteDatabase db, String cita, String autor) {
+        ContentValues values = new ContentValues();
+        values.put("cita", cita);
+        values.put("autor", autor);
+        values.put("numVeces", 0);
+        values.put("valoracion", "BUENA");
+        db.insert(TABLE_PALABRAS, null, values);
+    }
+
     public void borrarCitas(SQLiteDatabase db) {
         db.delete(TABLE_PALABRAS, "true", null);
-        insertarCita(db, "Sólo sé que no sé nada","Sócrates",0,"Buena");
-        insertarCita(db, "Hay dos cosas infinitas, el Universo y la estupidez humana","Albert Einstein",0,"Buena");
-        insertarCita(db, "Más vale la pena en el rostro que la mancha en el corazón","Miguel de Cervantes",0,"Buena");
+        insertarCita(db, "Sólo sé que no sé nada","Sócrates");
+        insertarCita(db, "Hay dos cosas infinitas, el Universo y la estupidez humana","Albert Einstein");
+        insertarCita(db, "Más vale la pena en el rostro que la mancha en el corazón","Miguel de Cervantes");
 
     }
 }

@@ -1,5 +1,6 @@
 package com.example.appcitas;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -15,18 +16,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutRes());
 
+        setContentView(getLayoutRes());
+        OnBackPressedCallback atras = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {mostrarDialogoSalida();}
+        };
+        getOnBackPressedDispatcher().addCallback(this, atras);
     }
 
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_main;
-    }
-
-    @Override
-    public void onBackPressed() {
-        mostrarDialogoSalida();
     }
 
     private void mostrarDialogoSalida() {
@@ -36,7 +37,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
+                        finishAffinity();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {

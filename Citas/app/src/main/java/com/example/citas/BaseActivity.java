@@ -9,7 +9,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(get);
+        //setContentView(get);
     }
 
     protected int getLayoutRes() {
