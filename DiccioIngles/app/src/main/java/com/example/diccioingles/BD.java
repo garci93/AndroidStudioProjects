@@ -37,15 +37,13 @@ public class BD extends SQLiteOpenHelper {
                 "PRIMARY KEY (espanol, ingles))");
 
         insertarPalabra(db, "granada","pomegranate","palabra","pomegranate.mp3");
-        insertarPalabra(db, "granada","grenade");
-        insertarPalabra(db, "casa","house");
-        insertarPalabra(db, "casa","home");
-        insertarPalabra(db, "dedo","finger");
-        insertarPalabra(db, "pueblo","town");
-        insertarPalabra(db, "ciudad","city");
-        insertarPalabra(db, "tomar","take");
-        insertarPalabra(db, "aprobar","pass");
-        insertarPalabra(db, "aprobar","approve");
+        insertarPalabra(db, "granada","grenade","palabra","grenade.mp3");
+        insertarPalabra(db, "casa","house","palabra","house.mp3");
+        insertarPalabra(db, "casa","home","palabra","home.mp3");
+        insertarPalabra(db, "pueblo","town","palabra","town.mp3");
+        insertarPalabra(db, "ciudad","city","palabra","city.mp3");
+        insertarPalabra(db, "dar por sentado","take for granted","expresion","take_for_granted.mp3");
+        insertarPalabra(db, "sala de estar","living room","expresion","living_room.mp3");
     }
 
     @Override
