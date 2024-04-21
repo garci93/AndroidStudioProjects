@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BD extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NOMBRE = "DiccioIngles";
     public static final String TABLE_PALABRAS = "t_palabras";
     private List<String> listaPalabras;

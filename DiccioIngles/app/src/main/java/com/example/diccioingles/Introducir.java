@@ -26,6 +26,12 @@ public class Introducir extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        
+        String resourceName = getResources().getResourceEntryName(v.getId());
+        switch (resourceName) {
+            case "btnIntroducirPalabra":
+                db.insertarPalabra(dbWrite, txtEspanol.getText().toString(), txtIngles.getText().toString(), "palabra", "palabra.mp3");
+                break;
+        }
+        finish();
     }
 }
