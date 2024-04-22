@@ -1,6 +1,8 @@
 package com.example.diccioingles;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -13,16 +15,18 @@ import java.util.List;
 
 public class Consultar extends BaseActivity implements View.OnClickListener {
 
-    ListView listPalabras;
+    RecyclerView listaPalabras;
     List<String> resultado;
+    PalabrasAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutRes());
         resultado = db.getPalabras(dbRead);
-        listPalabras = findViewById(R.id.listPalabras);
-        listPalabras.setOnItemClickListener((parent, view, position, id) -> onItemClick(view));
-        setListPalabras();
+        listaPalabras = findViewById(R.id.listaPalabras);
+        listaPalabras.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new PalabrasAdapter(resultado); //CONSTRUCTOR DE PalabrasAdapter?
+        listaPalabras.setAdapter(adapter);
     }
     @Override
     protected int getLayoutRes()  {
