@@ -25,18 +25,19 @@ public class Consultar extends BaseActivity implements View.OnClickListener {
         resultado = db.getPalabras(dbRead);
         listaPalabras = findViewById(R.id.listaPalabras);
         listaPalabras.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new PalabrasAdapter(resultado); //CONSTRUCTOR DE PalabrasAdapter?
+        adapter = new PalabrasAdapter(resultado);
         listaPalabras.setAdapter(adapter);
+        setListPalabras();
     }
     @Override
     protected int getLayoutRes()  {
         return R.layout.activity_consultar;
     }
 
-    public void onItemClick(View v) {
-        String palabra = listPalabras.getItemAtPosition(v.getId()).toString();
-        mostrarDialogoPalabra(palabra);
-    }
+//    public void onItemClick(View v) {
+//        String palabra = listaPalabras.getItemAtPosition(v.getId()).toString();
+//        mostrarDialogoPalabra(palabra);
+//    }
 
     private void mostrarDialogoPalabra(String palabra) {
         String[] resultado = db.getUnaPalabra(dbRead, palabra);
@@ -52,8 +53,8 @@ public class Consultar extends BaseActivity implements View.OnClickListener {
     }
 
     public void setListPalabras() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, resultado) ;
-        listPalabras.setAdapter(adapter);
+        PalabrasAdapter adapter = new PalabrasAdapter(resultado);
+        listaPalabras.setAdapter(adapter);
     }
 
     @Override
