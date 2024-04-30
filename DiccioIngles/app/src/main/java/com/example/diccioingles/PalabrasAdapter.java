@@ -1,5 +1,7 @@
 package com.example.diccioingles;
 
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -17,16 +19,18 @@ public class PalabrasAdapter extends RecyclerView.Adapter<PalabraViewHolder>{
     @NonNull
     @Override
     public PalabraViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_consultar, parent, false);
+        return new PalabraViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PalabraViewHolder holder, int position) {
-
+        String palabra = palabras.get(position);
+        holder.bind(palabra);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return palabras.size();
     }
 }

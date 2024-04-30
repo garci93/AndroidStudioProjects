@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BD extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private static final String DATABASE_NOMBRE = "DiccioIngles";
     public static final String TABLE_PALABRAS = "t_palabras";
     public static List<String> listaPalabras;
@@ -30,20 +30,23 @@ public class BD extends SQLiteOpenHelper {
                 "espanol INTEGER NOT NULL," +
                 "ingles TEXT NOT NULL," +
                 "tipo TEXT NOT NULL," +
+                "incorrecta1 TEXT NOT NULL," +
+                "incorrecta2 TEXT NOT NULL," +
+                "incorrecta3 TEXT NOT NULL," +
                 "sonido TEXT NOT NULL," +
                 "fechaIntro DATE NOT NULL," +
                 "fechaUltimo DATE," +
                 "numAciertos INTEGER NOT NULL," +
                 "PRIMARY KEY (espanol, ingles))");
 
-        insertarPalabra(db, "granada","pomegranate","palabra","pomegranate.mp3");
-        insertarPalabra(db, "granada","grenade","palabra","grenade.mp3");
-        insertarPalabra(db, "casa","house","palabra","house.mp3");
-        insertarPalabra(db, "casa","home","palabra","home.mp3");
-        insertarPalabra(db, "pueblo","town","palabra","town.mp3");
-        insertarPalabra(db, "ciudad","city","palabra","city.mp3");
-        insertarPalabra(db, "dar por sentado","take for granted","expresion","take_for_granted.mp3");
-        insertarPalabra(db, "sala de estar","living room","expresion","living_room.mp3");
+        insertarPalabra(db, "granada","pomegranate","palabra","e","e","e","pomegranate.mp3");
+        insertarPalabra(db, "granada","grenade","palabra","e","e","e","grenade.mp3");
+        insertarPalabra(db, "casa","house","palabra","e","e","e","house.mp3");
+        insertarPalabra(db, "casa","home","palabra","e","e","e","home.mp3");
+        insertarPalabra(db, "pueblo","town","palabra","e","e","e","town.mp3");
+        insertarPalabra(db, "ciudad","city","palabra","e","e","e","city.mp3");
+        insertarPalabra(db, "dar por sentado","take for granted","expresion","e","e","e","take_for_granted.mp3");
+        insertarPalabra(db, "sala de estar","living room","expresion","e","e","e","living_room.mp3");
     }
 
     @Override
@@ -94,12 +97,15 @@ public class BD extends SQLiteOpenHelper {
         return listaPalabras;
     }
 
-    public boolean insertarPalabra(SQLiteDatabase db, String espanol, String ingles, String tipo, String sonido) {
+    public boolean insertarPalabra(SQLiteDatabase db, String espanol, String ingles, String tipo, String incorrecta1, String incorrecta2, String incorrecta3, String sonido) {
         ContentValues values = new ContentValues();
         if (db.rawQuery("SELECT * FROM " + TABLE_PALABRAS + " WHERE espanol=? AND ingles=?", new String[]{espanol, ingles}).getCount() == 0) {
             values.put("espanol", espanol);
             values.put("ingles", ingles);
             values.put("tipo", tipo);
+            values.put("incorrecta1", sonido);
+            values.put("incorrecta2", sonido);
+            values.put("incorrecta3", sonido);
             values.put("sonido", sonido);
             values.put("fechaIntro", "CURRENT_DATE()");
             values.put("fechaUltimo", "CURRENT_DATE()");
@@ -110,13 +116,20 @@ public class BD extends SQLiteOpenHelper {
         return false;
     }
 
-    public boolean modificarPalabra(SQLiteDatabase db, String espanolNuevo, String inglesNuevo, String espanolViejo, String inglesViejo) {
+    public boolean modificarPalabra(SQLiteDatabase db, String espanolNuevo, String inglesNuevo, String espanolViejo, String inglesViejo, String incorrecta1, String incorrecta2, String incorrecta3) {
         ContentValues values = new ContentValues();
         if (db.rawQuery("SELECT * FROM " + TABLE_PALABRAS + " WHERE espanol=? AND ingles=?", new String[]{espanolNuevo, inglesNuevo}).getCount() == 0) {
             values.put("espanol", espanolNuevo);
             values.put("ingles", inglesNuevo);
+            values.put("incorrecta1", incorrecta1);
+            values.put("incorrecta2", incorrecta2);
+            values.put("incorrecta3", incorrecta3);
+            //juntar en una sola sentencia
             db.execSQL("UPDATE " + TABLE_PALABRAS + " SET espanol=? WHERE espanol=? AND ingles=?", new String[]{espanolNuevo, espanolViejo, inglesViejo});
             db.execSQL("UPDATE " + TABLE_PALABRAS + " SET ingles=? WHERE espanol=? AND ingles=?", new String[]{inglesNuevo, espanolViejo, inglesViejo});
+            db.execSQL("UPDATE " + TABLE_PALABRAS + " SET incorrecta1=? WHERE espanol=? AND ingles=?", new String[]{incorrecta1, espanolNuevo, inglesNuevo});
+            db.execSQL("UPDATE " + TABLE_PALABRAS + " SET incorrecta2=? WHERE espanol=? AND ingles=?", new String[]{incorrecta2, espanolNuevo, inglesNuevo});
+            db.execSQL("UPDATE " + TABLE_PALABRAS + " SET incorrecta3=? WHERE espanol=? AND ingles=?", new String[]{incorrecta3, espanolNuevo, inglesNuevo});
             return true;
         }
         return false;

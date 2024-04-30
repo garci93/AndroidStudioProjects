@@ -25,8 +25,6 @@ public class Consultar extends BaseActivity implements View.OnClickListener {
         resultado = db.getPalabras(dbRead);
         listaPalabras = findViewById(R.id.listaPalabras);
         listaPalabras.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new PalabrasAdapter(resultado);
-        listaPalabras.setAdapter(adapter);
         setListPalabras();
     }
     @Override
