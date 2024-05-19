@@ -33,7 +33,7 @@ public class Introducir extends BaseActivity implements View.OnClickListener {
                 txtEspanol = findViewById(R.id.txtEspanol);
                 txtIngles = findViewById(R.id.txtIngles);
                 String tipo = txtEspanol.getText().toString().contains(" ") ? "expresion" : "palabra";
-                db.insertarPalabra(dbWrite, txtEspanol.getText().toString(), txtIngles.getText().toString(), tipo, "palabra.mp3");
+                db.insertarPalabra(dbWrite, txtEspanol.getText().toString(), txtIngles.getText().toString(), tipo, "e", "e", "e", "e");
                 break;
                 //en consultar, al pinchar, se muestra un dialogo con la palabra, la traduccion, el numero de aciertos y la fecha del ultimo test
                 //y tambien la opcion de modificar la palabra
