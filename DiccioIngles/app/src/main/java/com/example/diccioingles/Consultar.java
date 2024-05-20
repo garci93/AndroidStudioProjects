@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -15,7 +17,7 @@ import java.util.List;
 
 public class Consultar extends BaseActivity implements View.OnClickListener {
 
-    RecyclerView listaPalabras;
+    ListView listaPalabras;
     List<String> resultado;
     PalabrasAdapter adapter;
     @Override
@@ -24,8 +26,18 @@ public class Consultar extends BaseActivity implements View.OnClickListener {
         setContentView(getLayoutRes());
         resultado = db.getPalabras(dbRead);
         listaPalabras = findViewById(R.id.listaPalabras);
-        listaPalabras.setLayoutManager(new LinearLayoutManager(this));
-        setListPalabras();
+        listaPalabras.setClickable(true);
+        listaPalabras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+
+                //Object o = listView.getItemAtPosition(position);
+                // Realiza lo que deseas, al recibir clic en el elemento de tu listView determinado por su posicion.
+                Log.i("Click", "click en el elemento " + position + " de mi ListView");
+
+            }
+        });
     }
     @Override
     protected int getLayoutRes()  {
@@ -50,13 +62,13 @@ public class Consultar extends BaseActivity implements View.OnClickListener {
                 .show();
     }
 
-    public void setListPalabras() {
-        PalabrasAdapter adapter = new PalabrasAdapter(resultado);
-        listaPalabras.setAdapter(adapter);
-    }
-
     @Override
     public void onClick(View v) {
 
     }
+
+    /*public void setListPalabras() {
+        PalabrasAdapter adapter = new PalabrasAdapter(resultado);
+        listaPalabras.setAdapter(adapter);
+    }*/
 }
