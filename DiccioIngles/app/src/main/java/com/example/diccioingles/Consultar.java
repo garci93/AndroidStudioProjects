@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -19,20 +20,21 @@ public class Consultar extends BaseActivity implements View.OnClickListener {
 
     ListView listaPalabras;
     List<String> resultado;
-    PalabrasAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutRes());
         resultado = db.getPalabras(dbRead);
         listaPalabras = findViewById(R.id.listaPalabras);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, resultado);
         listaPalabras.setClickable(true);
+        listaPalabras.setAdapter(adapter);
         listaPalabras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-
-                //Object o = listView.getItemAtPosition(position);
+                String palabraSeleccionada = resultado.get(position);
+                Log.i("Click", "click en el elemento " + position + ": " + palabraSeleccionada);
                 // Realiza lo que deseas, al recibir clic en el elemento de tu listView determinado por su posicion.
                 Log.i("Click", "click en el elemento " + position + " de mi ListView");
 

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BD extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 7;
     private static final String DATABASE_NOMBRE = "DiccioIngles.db";
     public static final String TABLE_PALABRAS = "t_palabras";
     public static List<String> listaPalabras;
@@ -39,14 +39,14 @@ public class BD extends SQLiteOpenHelper {
                 "numAciertos INTEGER NOT NULL," +
                 "PRIMARY KEY (espanol, ingles))");
 
-        insertarPalabra(db, "granada","pomegranate","palabra","e","e","e","pomegranate.mp3");
-        insertarPalabra(db, "granada","grenade","palabra","e","e","e","grenade.mp3");
-        insertarPalabra(db, "casa","house","palabra","e","e","e","house.mp3");
-        insertarPalabra(db, "casa","home","palabra","e","e","e","home.mp3");
-        insertarPalabra(db, "pueblo","town","palabra","e","e","e","town.mp3");
-        insertarPalabra(db, "ciudad","city","palabra","e","e","e","city.mp3");
-        insertarPalabra(db, "dar por sentado","take for granted","expresion","e","e","e","take_for_granted.mp3");
-        insertarPalabra(db, "sala de estar","living room","expresion","e","e","e","living_room.mp3");
+        insertarPalabra(db, "granada","pomegranate","palabra","grenada","grapefruit","greenade","pomegranate.mp3");
+        insertarPalabra(db, "granada","grenade","palabra","granade","greenery","gradient","grenade.mp3");
+        insertarPalabra(db, "casa","house","palabra","case","horse","hog","house.mp3");
+        insertarPalabra(db, "casa","home","palabra","hole","room","building","home.mp3");
+        insertarPalabra(db, "pueblo","town","palabra","country","council","person","town.mp3");
+        insertarPalabra(db, "ciudad","city","palabra","civilian","cuisine","cycle","city.mp3");
+        insertarPalabra(db, "dar por sentado","take for granted","expresion","remain seated","take a seat","give for granted","take_for_granted.mp3");
+        insertarPalabra(db, "sala de estar","living room","expresion","place to be","drawing room","bathroom","living_room.mp3");
     }
 
     @Override
@@ -55,17 +55,27 @@ public class BD extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public List getPalabras(SQLiteDatabase db) {
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_PALABRAS, null);
-        listaPalabras = new ArrayList<>();
+    public List<String> getPalabras(SQLiteDatabase db) {
+        List<String> listaPalabras = new ArrayList<>();
 
-        if (cursor.moveToFirst()) {
-            do {
-                String palabra = cursor.getString(cursor.getColumnIndex("espanol"));
 
-                listaPalabras.add(palabra);
-            } while (cursor.moveToNext());
+        String query = "SELECT espanol FROM " + TABLE_PALABRAS;
+        Cursor cursor = db.rawQuery(query, null);
+
+        try {
+            if (cursor.moveToFirst()) {
+                int colIndexEspanol = cursor.getColumnIndex("espanol");
+                do {
+                    String palabra = cursor.getString(colIndexEspanol);
+                    listaPalabras.add(palabra);
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
+
         return listaPalabras;
     }
 
@@ -83,14 +93,48 @@ public class BD extends SQLiteOpenHelper {
         return unaPalabra;
     }
 
-    public List getPalabrasN(SQLiteDatabase db, int cant) {
+    public List<String> getPalabrasN(SQLiteDatabase db, int cant) {
+        List<String> listaPalabras = new ArrayList<>();
+
+        if (cant <= 0) {
+            return listaPalabras;
+        }
+
+        String query = "SELECT espanol FROM " + TABLE_PALABRAS + " LIMIT " + cant;
+        Cursor cursor = db.rawQuery(query, null);
+
+        try {
+            if (cursor.moveToFirst()) {
+                int colIndexEspanol = cursor.getColumnIndex("espanol");
+                do {
+                    String palabra = cursor.getString(colIndexEspanol);
+                    listaPalabras.add(palabra);
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return listaPalabras;
+    }
+
+    public List getPreguntas(SQLiteDatabase db, int cant) {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_PALABRAS + " LIMIT " + cant, null);
         listaPalabras = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
                 String palabra = cursor.getString(cursor.getColumnIndex("espanol"));
-
+                String corr = cursor.getString(cursor.getColumnIndex("ingles"));
+                String inc1 = cursor.getString(cursor.getColumnIndex("incorrecta1"));
+                String inc2 = cursor.getString(cursor.getColumnIndex("incorrecta2"));
+                String inc3 = cursor.getString(cursor.getColumnIndex("incorrecta3"));
+                listaPalabras.add(corr);
                 listaPalabras.add(palabra);
+                listaPalabras.add(inc1);
+                listaPalabras.add(inc2);
+                listaPalabras.add(inc3);
             } while (cursor.moveToNext());
         }
 
@@ -103,9 +147,9 @@ public class BD extends SQLiteOpenHelper {
             values.put("espanol", espanol);
             values.put("ingles", ingles);
             values.put("tipo", tipo);
-            values.put("incorrecta1", sonido);
-            values.put("incorrecta2", sonido);
-            values.put("incorrecta3", sonido);
+            values.put("incorrecta1", incorrecta1);
+            values.put("incorrecta2", incorrecta2);
+            values.put("incorrecta3", incorrecta3);
             values.put("sonido", sonido);
             values.put("fechaIntro", "CURRENT_DATE()");
             values.put("fechaUltimo", "CURRENT_DATE()");
