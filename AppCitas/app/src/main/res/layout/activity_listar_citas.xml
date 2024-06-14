@@ -6,23 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".ListarCitas">
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="409dp"
-        android:layout_height="500dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/btnVolverListar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="600dp"
         android:onClick="onClick"
         android:text="@string/Volver"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layoutLista"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-206dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="409dp"
+            android:layout_height="500dp" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

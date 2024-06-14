@@ -14,9 +14,15 @@ import java.util.List;
 
 public class DB extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 8;
     private static final String DATABASE_NOMBRE = "RecupACDAT";
     public static final String TABLE_PALABRAS = "t_citas";
+    public static final String COLUMN_ID = "codigo";
+    public static final String COLUMN_CITA = "cita";
+    public static final String COLUMN_AUTOR = "autor";
+    public static final String COLUMN_NUM_VECES = "numVeces";
+    public static final String COLUMN_VALORACION = "valoracion";
+
     private List<String> listaPalabras;
 
     public DB(@Nullable Context context) {
@@ -33,6 +39,7 @@ public class DB extends SQLiteOpenHelper {
                 "valoracion TEXT NOT NULL)");
 
         insertarCitaPredeterminado(db, "Sólo sé que no sé nada","Sócrates",0,"Buena");
+        insertarCitaPredeterminado(db, "No estamos obligados a hacer arte ni historia, sino ganar dinero","Michael Eisner",0,"Mala");
         insertarCitaPredeterminado(db, "Hay dos cosas infinitas, el Universo y la estupidez humana","Albert Einstein",0,"Buena");
         insertarCitaPredeterminado(db, "Más vale la pena en el rostro que la mancha en el corazón","Miguel de Cervantes",0,"Buena");
         insertarCitaPredeterminado(db, "El valor de una idea radica en el uso de la misma","Thomas A. Edison",0,"Buena");
@@ -45,13 +52,30 @@ public class DB extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public String getDetallesCita(SQLiteDatabase db, String id) {
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_PALABRAS + " WHERE codigo=?", new String[]{id});
+        String detalles = "";
+
+        if (cursor.moveToFirst()) {
+            do {
+                String pablabra = cursor.getString(cursor.getColumnIndex(COLUMN_CITA));
+                String autor = cursor.getString(cursor.getColumnIndex(COLUMN_AUTOR));
+                String numVeces = cursor.getString(cursor.getColumnIndex(COLUMN_NUM_VECES));
+                String valoracion = cursor.getString(cursor.getColumnIndex(COLUMN_VALORACION));
+
+                detalles = pablabra + "|" + autor + "|" + numVeces + "|" + valoracion;
+            } while (cursor.moveToNext());
+        }
+        return detalles;
+    }
+
     public List getCitas(SQLiteDatabase db) {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_PALABRAS, null);
         listaPalabras = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
             do {
-                String pablabra = cursor.getString(cursor.getColumnIndex("cita"));
+                String pablabra = cursor.getString(cursor.getColumnIndex(COLUMN_CITA));
 
                 listaPalabras.add(pablabra);
             } while (cursor.moveToNext());
@@ -65,7 +89,7 @@ public class DB extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                String cita = cursor.getString(cursor.getColumnIndex("cita"));
+                String cita = cursor.getString(cursor.getColumnIndex(COLUMN_CITA));
 
                 citaBuscar = cita ;
             } while (cursor.moveToNext());
@@ -78,7 +102,7 @@ public class DB extends SQLiteOpenHelper {
         listaPalabras = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
-                String cita = cursor.getString(cursor.getColumnIndex("cita"));
+                String cita = cursor.getString(cursor.getColumnIndex(COLUMN_CITA));
 
                 listaPalabras.add(cita);
             } while (cursor.moveToNext());
@@ -89,19 +113,19 @@ public class DB extends SQLiteOpenHelper {
 
     public void insertarCitaPredeterminado(SQLiteDatabase db, String cita, String autor, int numVeces, String valoracion) {
         ContentValues values = new ContentValues();
-        values.put("cita", cita);
-        values.put("autor", autor);
-        values.put("numVeces", numVeces);
-        values.put("valoracion", valoracion);
+        values.put(COLUMN_CITA, cita);
+        values.put(COLUMN_AUTOR, autor);
+        values.put(COLUMN_NUM_VECES, numVeces);
+        values.put(COLUMN_VALORACION, valoracion);
         db.insert(TABLE_PALABRAS, null, values);
     }
 
     public void modificarCita(SQLiteDatabase db, int idCita, String nuevaCita, String nuevoAutor, int nuevoNumVeces, String nuevaValoracion) {
         ContentValues values = new ContentValues();
-        values.put("cita", nuevaCita);
-        values.put("autor", nuevoAutor);
-        values.put("numVeces", nuevoNumVeces);
-        values.put("valoracion", nuevaValoracion);
+        values.put(COLUMN_CITA, nuevaCita);
+        values.put(COLUMN_AUTOR, nuevoAutor);
+        values.put(COLUMN_NUM_VECES, nuevoNumVeces);
+        values.put(COLUMN_VALORACION, nuevaValoracion);
 
         String whereClause = "codigo=?";
         String[] whereArgs = { String.valueOf(idCita) };
@@ -118,10 +142,10 @@ public class DB extends SQLiteOpenHelper {
 
     public void insertarCita(SQLiteDatabase db, String cita, String autor) {
         ContentValues values = new ContentValues();
-        values.put("cita", cita);
-        values.put("autor", autor);
-        values.put("numVeces", 0);
-        values.put("valoracion", "BUENA");
+        values.put(COLUMN_CITA, cita);
+        values.put(COLUMN_AUTOR, autor);
+        values.put(COLUMN_NUM_VECES, 0);
+        values.put(COLUMN_VALORACION, "BUENA");
         db.insert(TABLE_PALABRAS, null, values);
     }
 
